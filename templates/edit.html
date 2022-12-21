@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container p-8">
+    <div class="row">
+        <a class="mt-5 text-danger fs-1 text-uppercase" href="{% url 'emp_list'%}">Edit Employee - Employee Management System!</a>
+    </div>
+    <br>
+    <div class="row">
+        <form method="POST", action="{% url 'edit_emp' employee.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="name" class="form-control" id="name" name="name" value="{{employee.name}}">
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Role</label>
+                <select class="form-select" aria-label="Default select example" name="role">
+                    
+                    {% for role in role_list %}
+                    {% if role.name != employee.role.name %}
+                    <option value="{{role.id}}">{{role.name}}</option>
+                    {% endif %}
+                    {% endfor %}
+                    <option selected value="{{employee.role.id}}">{{employee.role.name}}</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="name" class="form-control" id="age"name="age" value="{{employee.age}}" >
+            </div>
+            <div class="mb-3">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="name" class="form-control" id="salary" name="salary" value="{{employee.Salary}}">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="name" class="form-control" id="address" name="address" value="{{employee.address}}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

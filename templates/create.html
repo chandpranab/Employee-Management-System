@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="row m-5">
+<div class="container w-75">
+    <a class="mt-5 text-danger fs-1 text-uppercase" href="{% url 'emp_list'%}">Employee Management System!</a>
+    {% if not result %}
+        <p>{{errormsg}}</p>
+    {% endif %}
+    <form method="POST", action="{% url 'create_emp' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="name" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Role</label>
+            <select class="form-select" aria-label="Default select example" name="role">
+                <option selected>Open this select menu</option>
+                {% for role in role_list %}
+                <option value="{{role.id}}">{{role.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="name" class="form-control" id="age"name="age" >
+        </div>
+        <div class="mb-3">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="name" class="form-control" id="salary" name="salary" >
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="name" class="form-control" id="address" name="address" >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</div>
+{% endblock %}
+

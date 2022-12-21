@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container p-8">
+    <div class="row">
+        <a class="mt-5 text-danger fs-1 text-uppercase" href="{% url 'home'%}">Employee Management System!</a>
+    </div>
+    <br>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Role</th>
+              <th scope="col">Age</th>
+              <th scope="col">Salary</th>
+              <th scope="col">Address</th>
+              <th scope="col">Action</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for employee in employees %}
+            <tr >
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{employee.name}}</td>
+              <td>{{employee.role.name}}</td>
+              <td>{{employee.age}}</td>
+              <td>{{employee.Salary}}</td>
+              <td>{{employee.address}}</td>
+              <td><a href="{% url 'edit_emp' employee.id %}" class="btn btn-info" role="button">Edit</a></td>
+              <td><a href="{% url 'delete_emp' employee.id %}" class="btn btn-danger" role="button">Delete</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+</div>
+{% endblock %}

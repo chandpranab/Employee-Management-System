@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="container p-8">
+    <div class="row">
+        <h2 class="mt-5 text-primary">Employee Management System!</h2>
+    </div>
+    <br>
+    <div class="row">
+        <a role="button" class="btn btn-outline-primary w-25 m-2" href="{% url 'emp_list' %}">View/Edit Employees</a>
+        <a role="button" class="btn btn-outline-secondary w-25 m-2" href="{% url 'create_emp' %}">Create Employee</a>
+        <a role="button" class="btn btn-outline-danger w-25 m-2" href="{% url 'emp_list' %}">Delete Employees</a>
+    </div>
+</div>
+{% endblock %}
